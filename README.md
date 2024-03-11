@@ -55,7 +55,9 @@ My initial evaluation of the dataframe main statistics resulted in the necessity
 
 As the lower boundaries calculated with IQR were negative and the distributions were not normal, I estimated and then trimmed the outliers using [DistFit package](https://pypi.org/project/distfit/). 
 The results of the distribution model fitting for rent and floor area with the boundaries of confidence intervals are shown below.
-![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/1430f500-0678-43aa-a8ea-eedf6807773b) ![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/0e5cc3a9-805b-455b-b3b9-031f7e630672)
+Floor area distribution |  Rent distribution
+:-------------------------:|:-------------------------:
+![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/1430f500-0678-43aa-a8ea-eedf6807773b)  |  ![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/0e5cc3a9-805b-455b-b3b9-031f7e630672)
 
 That is what the data looked like after handling outliers.
 ![Boxplots of average area and rent after trimming outliers](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/e84816e4-3e4f-41a0-901c-afd25042f50d)
