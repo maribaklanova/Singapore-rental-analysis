@@ -51,6 +51,7 @@ I removed from initial dataframe columns that were not needed for my analysis, c
 
 
 My initial evaluation of the dataframe main statistics resulted in the necessity to trim outliers of the most variable data columns.
+
 ![Boxplots of average area and rent before trimming outliers](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/ade2caa5-611e-4d68-8304-91a97e12731a)
 
 As the lower boundaries calculated with IQR were negative and the distributions were not normal, I estimated and then trimmed the outliers using [DistFit package](https://pypi.org/project/distfit/). 
@@ -59,10 +60,11 @@ Floor area distribution |  Rent distribution
 :-------------------------:|:-------------------------:
 ![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/1430f500-0678-43aa-a8ea-eedf6807773b)  |  ![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/0e5cc3a9-805b-455b-b3b9-031f7e630672)
 
-That is what the data looked like after handling outliers.
+This is what the data looked like after handling outliers.
+
 ![Boxplots of average area and rent after trimming outliers](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/e84816e4-3e4f-41a0-901c-afd25042f50d)
 
-The next challenge I faced was to add WGS coordinates to the dataframe as I needed them to locate the names of the neighborhood (planning area) and region of each property. To achieve this, I defined the function converting SVY21 coordinates into WGS84 format accessing OneMap API, and applied it to a reference dataframe with x and y coordinates, then merged it with the main dataframe. 
+The next challenge I faced was to add WGS coordinates to the dataframe as I needed them to locate the names of the neighborhood (planning area) and region of each property. To achieve this, I defined the function converting SVY21 coordinates into WGS84 format accessing OneMap API, and applied it to a reference dataframe with *x* and *y* coordinates, then merged it with the main dataframe. 
 After that I modified the dataframe with GeoPandas, adding a geometry column based on which I added the columns with neighborhood (planning area) and region using the [geojson file](https://beta.data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view) 
 
 Thus, I additionally included the following columns in the final dataframe:
@@ -85,10 +87,10 @@ First of all, I checked the main statistics of the numerical data, s.a. mean, mi
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>noOfBedRoom</th>
-      <th>AvgAreaSqft</th>
-      <th>rent</th>
-      <th>SGDperSqft</th>
+      <th>number of bedrooms</th>
+      <th>avg fl. area, sq.ft.</th>
+      <th>rent, SGD</th>
+      <th>SGD per sq.ft.</th>
     </tr>
   </thead>
   <tbody>
@@ -157,10 +159,10 @@ Then I explored average, median and mode values by regions:
   <thead>
     <tr>
       <th></th>
-      <th colspan="3" halign="left">noOfBedRoom</th>
-      <th colspan="3" halign="left">AvgAreaSqft</th>
-      <th colspan="3" halign="left">rent</th>
-      <th colspan="3" halign="left">SGDperSqft</th>
+      <th colspan="3" halign="left">number of bedrooms</th>
+      <th colspan="3" halign="left">avg fl. area, sq.ft.</th>
+      <th colspan="3" halign="left">rent, SGD</th>
+      <th colspan="3" halign="left">SGD per sq.ft.</th>
     </tr>
     <tr>
       <th></th>
@@ -276,8 +278,9 @@ and standard correlation coefficients:
 
 ![Correlation matrix](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/106ec802-8fc1-4b3e-a4a4-b95b08b90a3d)
 
-Statistical indicators provide a guide to the ranges, distribution features, and averages of rents and unit rental cost, floor area, and number of bedrooms, with the mean not significantly different from the median after handling outliers. We can distinguish the difference in the mean values across the regions with the Central region having the highest rental rates and the West offering more spacious properties.
-The correlation map presents a strong positive correlation between the average area and the number of bedrooms as well as rent, while the correlation between the unit price and average area, as well as the number of bedrooms, is a pretty strong negative.
+* Statistical indicators provide a guide to the ranges, distribution features, and averages of rents and unit rental cost, floor area, and number of bedrooms, with the mean not significantly different from the median after handling outliers.
+* We can distinguish the difference in the mean values across the regions with the Central region having the highest rental rates and the West offering more spacious properties.
+* The correlation map presents a strong positive correlation between the average area and the number of bedrooms as well as rent, while the correlation between the unit price and average area, as well as the number of bedrooms, is a pretty strong negative.
 
 ### 2. Which districts and projects are top by the number of lease contracts?
 
@@ -646,10 +649,11 @@ Top 15 projects by the number of lease contracts with the mean indicators of ren
 ### 3. Exploring the rent area-wise patterns on the map
 
 For the geomapping I used the grouped dataframe, spatial data from the geojson file, and Folium library tools. I also collected data on private educational institutions (most of which are international schools) from OneMap API to locate them on the map.
+Here is the map preview:
 
 ![Map preview](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/abb77036-2bc6-4e22-889b-335fd9b553cd)
 
-[**LINK to the map**](https://raw.githack.com/maribaklanova/Singapore-rental-analysis/main/SG_rent_map.html)
+[**LINK to the map in html**](https://raw.githack.com/maribaklanova/Singapore-rental-analysis/main/SG_rent_map.html)
 
 The map allows us to look closer at the varying rent in Singapore neighborhoods from the central region with the most expensive rents to the north with more affordable options while assessing the location and number of schools nearby. We can also check the count of leases for the past 2 years and average rent per sq. ft.
 
@@ -667,7 +671,7 @@ I performed some data grouping and used matplotlib, Seaborn, and joyplot to visu
 
 #### 4.2 Rent dynamics across regions
 
-As the raw data had the limited date format of mmyy, I couldn't perform the proper time-series analysis. However, we can evaluate the general month-to-month dynamic.
+As the raw data had the limited date format of *mmyy*, I couldn't perform the proper time-series analysis. However, we can evaluate the general month-to-month dynamic.
 
 ![](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/ba02bd16-8572-43f3-a096-457ec35457bd)
 
