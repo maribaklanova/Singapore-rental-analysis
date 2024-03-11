@@ -2,11 +2,11 @@
 
 ## Summary
 
-The project provides valuable insights into the Singapore rental market. 
-Data was collected from official sources s.a. URA API, OneMap API, and a geojson file on planning areas.
-Data cleaning and pre-processing steps were taken to address missing values, outliers, and data transformations.
-The analysis focused on rental prices by district, project, neighborhood (planning area), number of bedrooms, and region.
-Data visualization included various plots/charts and a rent-aggregating choropleth map of Singapore.
+The project provides valuable insights into the Singapore rental market.  
+- Data was collected from official sources s.a. URA API, OneMap API, and a geojson file on planning areas.  
+- Data cleaning and pre-processing steps were taken to address missing values, outliers, and data transformations.
+- The analysis focused on rental prices by district, project, neighborhood (planning area), number of bedrooms, and region.
+- Data visualization included various plots/charts and a rent-aggregating choropleth map of Singapore.
 
 By combining the insights from this project with available options and our specific needs like the property amenities, we can make a more data-driven decision about Singapore rental search!
 
@@ -14,12 +14,13 @@ For the code please refer to [the notebook](https://github.com/maribaklanova/Sin
 
 ## Project Overview
 
-There is a lack of projects analyzing the private property rental market in Singapore. This project aims to contribute to filling this gap.
-This project aims to analyze reliable rental data to understand the Singapore rental market and support further decisions on our residential rent with evidence-based insights. I’ll analyze data to investigate rental rates depending on the date, location, and property characteristics using Python with relevant libraries s.a. pandas, NumPy, GeoPandas, matplotlib, seaborn, folium, SciPy, etc. What I learn will then guide us in the choice of neighborhood and type of housing. This project will provide me with empirical evidence on suitable Singapore areas and patterns/trends of the rental market which allow us to narrow the search range, reduce non-productive efforts and stress levels, and simplify the adjustment process when relocating to Singapore.
+There is a lack of projects analyzing the private property rental market in Singapore. This project aims to contribute to filling this gap.  
+This project aims to analyze reliable rental data to understand the Singapore rental market and support further decisions on our residential rent with evidence-based insights. I’ll analyze data to investigate rental rates depending on the date, location, and property characteristics using Python with relevant libraries s.a. pandas, NumPy, GeoPandas, matplotlib, seaborn, folium, SciPy, etc.  
+What I learn will then guide us in the choice of neighborhood and housing options. This project will provide me with empirical evidence on suitable Singapore areas and patterns/trends of the rental market which allow us to narrow the search range, reduce non-productive efforts and stress levels, and simplify the adjustment process when relocating to Singapore.
 
 ## Data Sources
 
-In Singapore, all the private rental contracts are registered with the Inland Revenue Authority of Singapore, and the Urban Redevelopment Authority collects the data on them. 
+In Singapore, all the private rental contracts are registered with the Inland Revenue Authority of Singapore, and the Urban Redevelopment Authority collects the data on them.  
 For this project, I will be using the data on private residential properties with rental contracts from Jan-2022 through Dec-2023 obtained with the [API service of Urban Redevelopment Authority](https://www.ura.gov.sg/maps/api/#private-residential-properties-rental-contract), complementing it with the data related to locations obtained with [OneMap API of Singapore Land Authority](https://www.onemap.gov.sg/apidocs/) and from [geojson file on Planning Area Boundary](https://beta.data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view). 
 
 
@@ -64,7 +65,7 @@ This is what the data looked like after handling outliers.
 
 ![Boxplots of average area and rent after trimming outliers](https://github.com/maribaklanova/Singapore-rental-analysis/assets/162949373/e84816e4-3e4f-41a0-901c-afd25042f50d)
 
-The next challenge I faced was to add WGS coordinates to the dataframe as I needed them to locate the names of the neighborhood (planning area) and region of each property. To achieve this, I defined the function converting SVY21 coordinates into WGS84 format accessing OneMap API, and applied it to a reference dataframe with *x* and *y* coordinates, then merged it with the main dataframe. 
+The next challenge I faced was to add WGS coordinates to the dataframe as I needed them to locate the names of the neighborhood (planning area) and region of each property. To achieve this, I defined the function converting SVY21 coordinates into WGS84 format accessing OneMap API, and applied it to a reference dataframe with *x* and *y* coordinates, then merged it with the main dataframe.  
 After that I modified the dataframe with GeoPandas, adding a geometry column based on which I added the columns with neighborhood (planning area) and region using the [geojson file](https://beta.data.gov.sg/datasets/d_4765db0e87b9c86336792efe8a1f7a66/view) 
 
 Thus, I additionally included the following columns in the final dataframe:
